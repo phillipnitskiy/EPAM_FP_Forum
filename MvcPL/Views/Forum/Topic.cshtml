@@ -1,0 +1,54 @@
+﻿@model MvcPL.Models.View.ForumTopicViewModel
+
+@{
+    ViewBag.Title = Model.Topic.Subject;
+}
+
+@section Body {
+
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <ol class="board_breadcrumb breadcrumb">
+                <li><i class="fa fa-home text-primary"></i> @Html.ActionLink("Home", "Index", "Home", null, null)</li>
+
+                @foreach (var parentBoard in Model.ParentBoards)
+                {
+                    <li>@Html.ActionLink(parentBoard.Name, "Board", "Forum", new { id = parentBoard.Id }, null)</li>
+                }
+
+                <li class="active"><i class="fa fa-comments-o"></i> @Model.Topic.Subject</li>
+            </ol>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-1 col-md-11">
+
+            <h3>@Html.ActionLink(Model.Topic.Subject, "Topic", "Forum", new { id = Model.Topic.Id }, null)</h3>
+
+        </div>
+    </div>
+
+    @foreach (var post in Model.Topic.Posts)
+    {
+        @Html.DisplayFor(m => post)
+    }
+
+    @if (Request.IsAuthenticated)
+    {
+
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+
+                @Html.EditorFor(m => m.PostInput)
+
+            </div>
+        </div>
+
+    }
+
+
+}

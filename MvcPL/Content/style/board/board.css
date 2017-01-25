@@ -1,0 +1,16 @@
+﻿.board_table_content {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.board_breadcrumb {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.board_empty{
+    background-color: #d9edf7;
+    border-radius: 0px 0px 6px 6px !important;
+    margin-top: -17px;
+}

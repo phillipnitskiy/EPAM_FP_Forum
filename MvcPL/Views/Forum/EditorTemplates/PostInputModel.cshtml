@@ -1,0 +1,33 @@
+﻿@model MvcPL.Models.Input.PostInputModel
+
+@using (Html.BeginForm("AddPost", "Forum", new { topicId = Model.TopicId }, FormMethod.Post, new { @class = "form", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <h4 class="text-center">Add comment</h4>
+
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Text, new { @class = "comment_textarea form-control" })
+            </div>
+        </div>
+        <div class="col-md-offset-2"></div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <input type="submit" value="Add new comment" class="btn btn-default btn-block" />
+            </div>
+        </div>
+
+        <hr />
+
+    </div>
+}

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Diagnostics;
+﻿using System.Data.Entity;
 using DAL.Interface.Repository;
 
 namespace DAL.Concrete

@@ -40,12 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\DalBoard.cs" />
+    <Compile Include="DTO\DalProfile.cs" />
     <Compile Include="DTO\DalRole.cs" />
+    <Compile Include="DTO\DalTopic.cs" />
     <Compile Include="DTO\DalUser.cs" />
     <Compile Include="DTO\IEntity.cs" />
-    <Compile Include="Interface\IRepository.cs" />
+    <Compile Include="DTO\DalPost.cs" />
+    <Compile Include="Interface\Repository\IBoardRepository.cs" />
+    <Compile Include="Interface\Repository\IPostRepository.cs" />
+    <Compile Include="Interface\Repository\IRepository.cs" />
+    <Compile Include="Interface\Repository\IRoleRepository.cs" />
     <Compile Include="Interface\IUnitOfWork.cs" />
-    <Compile Include="Interface\IUserRepository.cs" />
+    <Compile Include="Interface\Repository\ITopicRepository.cs" />
+    <Compile Include="Interface\Repository\IUserRepository.cs" />
+    <Compile Include="Interface\Repository\IProfileRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

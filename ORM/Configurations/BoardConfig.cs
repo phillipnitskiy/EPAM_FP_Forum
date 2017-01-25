@@ -13,6 +13,10 @@ namespace ORM.Configurations
                 .IsRequired()
                 .HasMaxLength(200);
 
+            Property(b => b.Description)
+                .IsOptional()
+                .HasMaxLength(200);
+
             HasMany(b => b.SubBoards)
                 .WithOptional(b => b.ParentBoard)
                 .HasForeignKey(b => b.ParentBoardId);

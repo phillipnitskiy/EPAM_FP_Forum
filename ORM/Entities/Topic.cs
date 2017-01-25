@@ -7,12 +7,12 @@ namespace ORM.Entities
     {
         public Topic()
         {
-            Comments = new List<Comment>();
+            Posts = new List<Post>();
         }
 
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Subject { get; set; }
 
         public DateTime CreationDate { get; set; }
 
@@ -22,6 +22,6 @@ namespace ORM.Entities
         public int BoardId { get; set; }
         public virtual Board Board { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }

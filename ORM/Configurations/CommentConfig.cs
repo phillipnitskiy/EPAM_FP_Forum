@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ORM.Configurations
 {
-    public class CommentConfig : EntityTypeConfiguration<Comment>
+    public class CommentConfig : EntityTypeConfiguration<Post>
     {
         public CommentConfig()
         {
@@ -17,7 +17,7 @@ namespace ORM.Configurations
                 .HasMaxLength(15000);
 
             HasRequired(c => c.User)
-                .WithMany(u => u.Comments)
+                .WithMany(u => u.Posts)
                 .HasForeignKey(c => c.UserId)
                 .WillCascadeOnDelete(false);
         }

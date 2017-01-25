@@ -9,7 +9,7 @@ namespace ORM.Configurations
         {
             HasKey(t => t.Id);
 
-            Property(t => t.Name)
+            Property(t => t.Subject)
                 .IsRequired()
                 .HasMaxLength(200);
 
@@ -20,7 +20,7 @@ namespace ORM.Configurations
                 .WithMany(u => u.Topics)
                 .HasForeignKey(t => t.UserId);
 
-            HasMany(t => t.Comments)
+            HasMany(t => t.Posts)
                 .WithRequired(t => t.Topic)
                 .HasForeignKey(t => t.TopicId);
         }

@@ -39,8 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\BoardEntity.cs" />
+    <Compile Include="Entities\PostEntity.cs" />
+    <Compile Include="Entities\ProfileEntity.cs" />
     <Compile Include="Entities\RoleEntity.cs" />
+    <Compile Include="Entities\TopicEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
+    <Compile Include="Services\IBoardService.cs" />
+    <Compile Include="Services\IPostService.cs" />
+    <Compile Include="Services\IProfileService.cs" />
+    <Compile Include="Services\IRoleService.cs" />
+    <Compile Include="Services\ITopicService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

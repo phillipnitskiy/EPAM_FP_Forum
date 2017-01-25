@@ -7,6 +7,7 @@ using Ninject;
 using Ninject.Web.Common;
 using ORM;
 using ORM.Initializers;
+using DAL.NLog;
 
 namespace DependencyResolver
 {
@@ -35,6 +36,22 @@ namespace DependencyResolver
 
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
+
+            kernel.Bind<IRoleService>().To<RoleService>();
+            kernel.Bind<IRoleRepository>().To<RoleRepository>();
+
+            kernel.Bind<IProfileService>().To<ProfileService>();
+            kernel.Bind<IProfileRepository>().To<ProfileRepository>();
+
+            kernel.Bind<IBoardService>().To<BoardService>();
+            kernel.Bind<ITopicService>().To<TopicService>();
+            kernel.Bind<IPostService>().To<PostService>();
+
+            kernel.Bind<IBoardRepository>().To<BoardRepository>();
+            kernel.Bind<ITopicRepository>().To<TopicRepository>();
+            kernel.Bind<IPostRepository>().To<PostReposytory>();
+
+            kernel.Bind<IForumLogger>().To<ForumLogger>().InSingletonScope();
         }
     }
 }

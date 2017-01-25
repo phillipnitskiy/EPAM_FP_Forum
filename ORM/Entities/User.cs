@@ -7,23 +7,26 @@ namespace ORM.Entities
     {
         public User()
         {
+            Roles = new HashSet<Role>();
             Topics = new List<Topic>();
-            Comments = new List<Comment>();
+            Posts = new List<Post>();
         }
 
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Login { get; set; }
+
+        public string Email { get; set; }
 
         public string Password { get; set; }
 
         public DateTime RegistrationDate { get; set; }
 
-        public int RoleId { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual Profile Profile { get; set; }
 
+        public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<Topic> Topics { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }
 

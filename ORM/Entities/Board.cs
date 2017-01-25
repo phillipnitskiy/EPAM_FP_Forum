@@ -13,6 +13,7 @@ namespace ORM.Entities
         public int Id { get; set; }
 
         public string Name { get; set; }
+        public string Description { get; set; }
 
         public int? ParentBoardId { get; set; }
         public virtual Board ParentBoard { get; set; }

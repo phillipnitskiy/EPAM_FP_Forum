@@ -1,60 +1,45 @@
-﻿body {
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color:#a0522d;
-    background-color:#f5deb3;
+﻿@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Glegoo);
+
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
-header, footer, nav, section {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+p, span, label {
+  font-family: 'Roboto', sans-serif;
+  line-height: 22px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.forum .forum-post-panel {
+    margin-bottom: 1em;
+}
+
+.forum.media-list li img.avatar {
     display: block;
+    margin: 0 auto;
 }
 
-/* Styles for basic forms
------------------------------------------------------------*/
-fieldset {
-    border: 1px solid #8b4513;
-    padding: 0 1.4em 1.4em 1.4em;
-    margin: 0 0 1.5em 0;
+.forum.media-list li .user-info {
+    text-align: center;
+    width: 8em;
 }
 
-legend {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-textarea {
-    min-height: 75px;
-}
-
-.editor-label {
-    margin: 1em 0 0 0;
-}
-
-.editor-field {
-    margin: 0.5em 0 0 0;
-}
-
-
-/* Styles for validation helpers
------------------------------------------------------------*/
-.field-validation-error {
-    color: #f00;
-}
-
-.field-validation-valid {
-    display: none;
-}
-
-.input-validation-error {
-    border: 1px solid #f00;
-    background-color: #fee;
-}
-
-.validation-summary-errors {
-    font-weight: bold;
-    color: #f00;
-}
-
-.validation-summary-valid {
-    display: none;
+@media (max-width: 760px) {
+    .forum.media-list li .user-info {
+        float: none;
+        width: 100%;
+        margin-bottom: 1em;
+    }
 }

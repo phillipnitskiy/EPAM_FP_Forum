@@ -1,16 +1,47 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
+
+    <link rel="icon" href="@Url.Content("~/content/favicon.ico")" />
+
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://use.fontawesome.com/a71c3b4afb.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-    @RenderBody()
+
+    @Html.Partial("_Header")
+
+    <div class="container content">
+        <div class="row">
+            <div class="col-lg-12">
+
+                @RenderSection("Body", required: false)
+
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("_Footer")
 
     @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @Scripts.Render("~/bundles/jqueryui")
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

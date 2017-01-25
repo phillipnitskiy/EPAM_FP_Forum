@@ -9,21 +9,22 @@ namespace MvcPL.Infrastructure
 {
     public class NinjectDependencyResolver : IDependencyResolver
     {
-        private IKernel kernel;
+        private IKernel _kernel;
 
         public NinjectDependencyResolver(IKernel kernel)
         {
-            this.kernel = kernel;
-            kernel.ConfigurateResolverWeb();
-        }
-        public object GetService(Type serviceType)
-        {
-            return kernel.TryGet(serviceType);
+            _kernel = kernel;
+            _kernel.ConfigurateResolverWeb();
         }
 
-        public IEnumerable<object> GetServices(Type serviceType)
+        public object GetService(Type type)
         {
-            return kernel.GetAll(serviceType);
+            return _kernel.TryGet(type);
+        }
+
+        public IEnumerable<object> GetServices(Type type)
+        {
+            return _kernel.GetAll(type);
         }
     }
 }

@@ -9,17 +9,27 @@ namespace ORM.Configurations
         {
             HasKey(u => u.Id);
 
-            Property(u => u.Name)
+            Property(u => u.Login)
                 .IsRequired()
-                .HasMaxLength(20);
+                .HasMaxLength(30);
+
+            Property(u => u.Email)
+                .IsRequired();
 
             Property(u => u.RegistrationDate)
                 .IsRequired();
 
-            HasRequired(u => u.Role)
+            HasOptional(u => u.Profile)
+                .WithRequired(p => p.User);
+
+            HasMany(u => u.Roles)
                 .WithMany(r => r.Users)
-                .HasForeignKey(u => u.RoleId)
-                .WillCascadeOnDelete(false);
+                .Map(m =>
+                {
+                    m.ToTable("UserRole");
+                    m.MapLeftKey("UserId");
+                    m.MapRightKey("RoleId");
+                });
         }
     }
 }

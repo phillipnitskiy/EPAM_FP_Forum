@@ -29,8 +29,7 @@ namespace MvcPL.Controllers
 
         #endregion
 
-        //
-        // GET: /Home/
+        #region Public methods
 
         [HttpGet]
         [AllowAnonymous]
@@ -43,8 +42,6 @@ namespace MvcPL.Controllers
             foreach (var board in mainBoards)
             {
                 var b = board.ToPlBoard();
-                //b.TopicCount = _boardService.GetBoardTopicsCount(b.Id);
-                //b.PostCount = _boardService.GetBoardPostsCount(b.Id);
 
                 var subBoards = _boardService.GetSubBoards(b.Id).OrderBy(boa => boa.Id).Take(3);
                 foreach (var subBoard in subBoards)
@@ -58,5 +55,6 @@ namespace MvcPL.Controllers
             return View(homeViewModel);
         }
 
+        #endregion
     }
 }

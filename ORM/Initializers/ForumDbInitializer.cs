@@ -6,7 +6,7 @@ using System.Web.Helpers;
 
 namespace ORM.Initializers
 {
-    public class ForumDbInitializer : DropCreateDatabaseAlways<EntityModel>
+    public class ForumDbInitializer : CreateDatabaseIfNotExists<EntityModel>
     {
 
         protected override void Seed(EntityModel context)

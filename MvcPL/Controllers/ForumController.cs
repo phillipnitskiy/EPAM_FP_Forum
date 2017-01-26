@@ -46,7 +46,7 @@ namespace MvcPL.Controllers
                 ?.ToPlBoard();
 
             if (board == null)
-                return View("Error");
+                return HttpNotFound();
 
             var forumBoardViewModel = new ForumBoardViewModel { Board = board };
             forumBoardViewModel.TopicInput.BoardId = id;

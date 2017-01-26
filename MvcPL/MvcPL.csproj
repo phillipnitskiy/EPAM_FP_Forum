@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -310,6 +311,8 @@
     <Content Include="Views\Forum\DisplayTemplates\PostViewModel.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Forum\FindTopic.cshtml" />
+    <Content Include="Views\Error\Default.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

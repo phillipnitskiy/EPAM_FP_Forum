@@ -311,7 +311,7 @@
     <Content Include="Views\Forum\DisplayTemplates\PostViewModel.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Forum\FindTopic.cshtml" />
-    <Content Include="Views\Error\Default.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup />

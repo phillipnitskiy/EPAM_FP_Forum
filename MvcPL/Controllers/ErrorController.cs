@@ -9,7 +9,7 @@ namespace MvcPL.Controllers
     public class ErrorController : Controller
     {
 
-        public ActionResult Default()
+        public ActionResult ServerError()
         {
             return View();
         }

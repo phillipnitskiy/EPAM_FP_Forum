@@ -101,7 +101,7 @@ namespace MvcPL.Controllers
                 ?.ToPlTopic();
 
             if (topic == null)
-                return View("Error");
+                return HttpNotFound();
 
             foreach (var post in topic.Posts)
             {

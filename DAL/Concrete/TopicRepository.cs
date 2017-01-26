@@ -38,6 +38,9 @@ namespace DAL.Concrete
                 .FirstOrDefault(t => t.Id == id)
                 ?.ToDalTopic();
 
+            if (topic == null)
+                return null;
+
             topic.Posts = context.Set<Post>()
                 .Where(p => p.TopicId == topic.Id)
                 .ToList()

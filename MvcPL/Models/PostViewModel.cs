@@ -16,5 +16,7 @@ namespace MvcPL.Models
 
         public string Text { get; set; }
 
+        public bool Reported { get; set; }
+
     }
 }

@@ -31,6 +31,27 @@ namespace BLL.Services
 
         #region Public Methods
 
+        public PostEntity GetPostEntity(int id)
+        {
+            return postRepository.GetById(id)?.ToBLLPost();
+        }
+
+
+        public void ReportPost(int id)
+        {
+            var post = postRepository.GetById(id);
+            post.Reported = true;
+            postRepository.Update(post);
+            uow.Commit();
+        }
+
+        public IEnumerable<PostEntity> GetReportedPosts()
+        {
+            return postRepository.GetAll()
+                .Where(p => p.Reported == true)
+                .Select(p => p.ToBLLPost());
+        }
+
         public void CreatePost(PostEntity post)
         {
             postRepository.Create(post.ToDalPost());
@@ -39,12 +60,14 @@ namespace BLL.Services
 
         public void DeletePost(PostEntity post)
         {
-            throw new NotImplementedException();
+            postRepository.Delete(post.ToDalPost());
+            uow.Commit();
         }
 
         public void UpdatePost(PostEntity post)
-        {
-            throw new NotImplementedException();
+        {            
+            postRepository.Update(post.ToDalPost());
+            uow.Commit();
         }
 
         #endregion

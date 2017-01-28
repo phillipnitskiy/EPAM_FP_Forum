@@ -10,6 +10,8 @@ namespace ORM.Entities
 
         public string Text { get; set; }
 
+        public bool Reported { get; set; }
+
         public int UserId { get; set; }
         public virtual User User { get; set; }
 

@@ -3,7 +3,7 @@
 @import url(http://fonts.googleapis.com/css?family=Glegoo);
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: FontAwesome, sans-serif;
 }
 
 h1,
@@ -12,7 +12,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: FontAwesome, sans-serif;
 }
 
 p, span, label {

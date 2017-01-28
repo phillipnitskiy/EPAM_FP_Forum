@@ -8,13 +8,13 @@ namespace MvcPL.Infrastructure.Mappers
     public static class MvcMappers
     {
 
-        public static UserEntity ToBllUser(this UserRegistrationInputModel model)
+        public static UserEntity ToBllUser(this UserRegistrationInputModel user)
         {
             return new UserEntity()
             {
-                Login = model.Login,
-                Email = model.Email,
-                Password = model.Password
+                Login = user.Login,
+                Email = user.Email,
+                Password = user.Password
             };
         }
 
@@ -77,7 +77,8 @@ namespace MvcPL.Infrastructure.Mappers
                 Id = post.Id,
                 User = user,
                 Text = post.Text,
-                CreationDate = post.CreationDate
+                CreationDate = post.CreationDate,
+                Reported = post.Reported
             };
         }
 

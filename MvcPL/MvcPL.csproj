@@ -165,6 +165,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PaginationHelper.cs" />
     <Compile Include="Infrastructure\Mappers\MvcPLMappers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\BoardViewModel.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Models\Input\UserLogInInputModel.cs" />
     <Compile Include="Models\Input\UserProfileInputModel.cs" />
     <Compile Include="Models\Input\UserRegistrationInputModel.cs" />
+    <Compile Include="Models\PageInfoModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Models\TopicViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -313,6 +315,7 @@
     <Content Include="Views\Forum\FindTopic.cshtml" />
     <Content Include="Views\Error\ServerError.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Forum\_Reported.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

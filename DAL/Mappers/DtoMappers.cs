@@ -128,7 +128,8 @@ namespace DAL.Mappers
                 UserId = post.UserId,
                 TopicId = post.TopicId,
                 Text = post.Text,
-                CreationDate = post.CreationDate
+                CreationDate = post.CreationDate,
+                Reported = post.Reported
             };
         }
 
@@ -140,7 +141,8 @@ namespace DAL.Mappers
                 UserId = post.UserId,
                 TopicId = post.TopicId,
                 Text = post.Text,
-                CreationDate = post.CreationDate
+                CreationDate = post.CreationDate,
+                Reported = post.Reported
             };
         }
     }

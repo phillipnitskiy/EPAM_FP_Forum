@@ -21,5 +21,7 @@ namespace MvcPL.Models.View
 
         public BoardInputModel BoardInput { get; set; }
         public TopicInputModel TopicInput { get; set; }
+
+        public PageInfoModel PageInfo { get; set; }
     }
 }

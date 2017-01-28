@@ -2,6 +2,7 @@
 using MvcPL.Infrastructure.Mappers;
 using MvcPL.Models.Input;
 using MvcPL.Models.View;
+using MvcPL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace MvcPL.Controllers
         private readonly IPostService _postService;
         private readonly IUserService _userService;
 
+        private readonly int DefaultPageSize = 7;
+
         #endregion
 
         #region Constructor
@@ -40,7 +43,7 @@ namespace MvcPL.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Board(int id)
+        public ActionResult Board(int id, int? page)
         {
             var board = _boardService.GetBoard(id)
                 ?.ToPlBoard();
@@ -52,6 +55,25 @@ namespace MvcPL.Controllers
             forumBoardViewModel.TopicInput.BoardId = id;
             forumBoardViewModel.BoardInput.ParentId = id;
             forumBoardViewModel.ParentBoards = _boardService.GetBoardParents(id).Select(b => b.ToPlBoard()).Reverse().ToList();
+
+            if (board.SubBoards.Count + board.Topics.Count > DefaultPageSize)
+            {
+                var pageInfo = new PageInfoModel
+                {
+                    PageNumber = page ?? 1,
+                    PageSize = DefaultPageSize,
+                    TotalItems = board.SubBoards.Count + board.Topics.Count
+                };
+
+                var skipped = board.SubBoards.Count;
+                board.SubBoards = board.SubBoards.Skip(((page ?? 1) - 1) * DefaultPageSize).Take(DefaultPageSize).ToList();
+                skipped -= board.SubBoards.Count;
+
+                var left = DefaultPageSize - board.SubBoards.Count();
+                board.Topics = board.Topics.Skip(((page ?? 1) - 1) * DefaultPageSize - skipped).Take(left).ToList();
+
+                forumBoardViewModel.PageInfo = pageInfo;
+            }
 
             return View(forumBoardViewModel);
         }
@@ -226,6 +248,22 @@ namespace MvcPL.Controllers
                 
             }
 
+        }
+
+        [HttpPost]
+        public ActionResult ReportPost(int postId)
+        {
+            _postService.ReportPost(postId);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Reported");
+            }
+            else
+            {
+                var post = _postService.GetPostEntity(postId);
+                return RedirectToAction("Topic", new { topicId = post.TopicId });
+            }
         }
 
         #endregion

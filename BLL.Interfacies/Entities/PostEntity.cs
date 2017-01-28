@@ -13,5 +13,6 @@ namespace BLL.Interface.Entities
         public int UserId { get; set; }
         public string Text { get; set; }
         public DateTime CreationDate { get; set; }
+        public bool Reported { get; set; }
     }
 }

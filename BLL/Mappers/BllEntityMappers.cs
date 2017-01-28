@@ -137,7 +137,8 @@ namespace BLL.Mappers
                 TopicId = post.TopicId,
                 UserId = post.UserId,
                 Text = post.Text,
-                CreationDate = post.CreationDate
+                CreationDate = post.CreationDate,
+                Reported = post.Reported
             };
         }
 
@@ -149,7 +150,8 @@ namespace BLL.Mappers
                 TopicId = post.TopicId,
                 UserId = post.UserId,
                 Text = post.Text,
-                CreationDate = post.CreationDate
+                CreationDate = post.CreationDate,
+                Reported = post.Reported
             };
         }
     }

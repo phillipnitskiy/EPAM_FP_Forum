@@ -75,6 +75,7 @@ namespace MvcPL.Infrastructure.Mappers
             return new PostViewModel
             {
                 Id = post.Id,
+                TopicId = post.TopicId,
                 User = user,
                 Text = post.Text,
                 CreationDate = post.CreationDate,
@@ -96,7 +97,9 @@ namespace MvcPL.Infrastructure.Mappers
             return new UserViewModel
             {
                 Id = user.Id,
-                Login = user.Login
+                Login = user.Login,
+                Email = user.Email,
+                RegistrationDate = user.RegistrationDate
             };
         }
 

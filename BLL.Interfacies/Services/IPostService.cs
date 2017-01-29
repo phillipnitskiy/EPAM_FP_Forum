@@ -12,7 +12,10 @@ namespace BLL.Interface.Services
         PostEntity GetPostEntity(int id);
 
         void ReportPost(int id);
+        void UnreportPost(int id);
         IEnumerable<PostEntity> GetReportedPosts();
+
+        void DeletePost(int id);
 
         void CreatePost(PostEntity post);
         void DeletePost(PostEntity post);

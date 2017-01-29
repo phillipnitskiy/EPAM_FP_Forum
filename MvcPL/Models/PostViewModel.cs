@@ -10,6 +10,8 @@ namespace MvcPL.Models
 
         public int Id { get; set; }
         
+        public int TopicId { get; set; }
+
         public UserViewModel User { get; set; }
 
         public DateTime CreationDate { get; set; }

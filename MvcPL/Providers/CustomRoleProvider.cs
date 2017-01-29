@@ -67,6 +67,11 @@ namespace MvcPL.Providers
             RoleService.RemoveUsersFromRoles(users, roles);
         }
 
+        public override bool RoleExists(string roleName)
+        {
+            return RoleService.GetAllRoleEntities().FirstOrDefault(r => r.Name == roleName) != null;
+        }
+
         #region Stabs
 
         public override void CreateRole(string roleName)
@@ -75,11 +80,6 @@ namespace MvcPL.Providers
         }
 
         public override bool DeleteRole(string roleName, bool throwOnPopulatedRole)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool RoleExists(string roleName)
         {
             throw new NotImplementedException();
         }

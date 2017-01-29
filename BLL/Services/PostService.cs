@@ -45,11 +45,26 @@ namespace BLL.Services
             uow.Commit();
         }
 
+        public void UnreportPost(int id)
+        {
+            var post = postRepository.GetById(id);
+            post.Reported = false;
+            postRepository.Update(post);
+            uow.Commit();
+        }
+
         public IEnumerable<PostEntity> GetReportedPosts()
         {
             return postRepository.GetAll()
                 .Where(p => p.Reported == true)
                 .Select(p => p.ToBLLPost());
+        }
+
+        public void DeletePost(int id)
+        {
+            var post = postRepository.GetById(id);
+            postRepository.Delete(post);
+            uow.Commit();
         }
 
         public void CreatePost(PostEntity post)

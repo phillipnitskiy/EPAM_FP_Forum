@@ -1,14 +1,9 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Security;
 using BLL.Interface.Services;
 using MvcPL.Models.Input;
 using MvcPL.Providers;
 using System.Web;
-using BLL.Interface.Entities;
-using System.IO;
-using System;
-using System.Text;
 using MvcPL.Infrastructure.Mappers;
 
 namespace MvcPL.Controllers

@@ -4,6 +4,28 @@
     ViewBag.Title = Model.Topic.Subject;
 }
 
+@*@section scripts {
+
+    <script>
+        function loadMorePosts()
+        {
+            $.ajax({
+                url: "/Forum/LoadMorePosts/",
+                cache: false,
+                success: function(html){
+                    $("#posts").append(html);
+                }
+            });
+        }
+
+        $(document).ready(function(){
+            show();
+            setInterval('loadMorePosts()', 10000);
+        });
+    </script>
+    
+}*@
+
 @section Body {
 
 
@@ -43,6 +65,18 @@
         </div>
     </div>
     
+    <div class="row">
+        <div class="col-md-offset-8 col-md-1 text-center">
+            <i class="fa fa-2x fa-spinner fa-spin" style="display:none" id="spinner" aria-hidden="true"></i>
+        </div>
+        
+        <div class="col-md-3 text-center">
+            @Ajax.ActionLink(" Load more", "LoadMorePosts", new { id = Model.Topic.Id }, new AjaxOptions { UpdateTargetId = "posts", InsertionMode = InsertionMode.InsertAfter, LoadingElementId = "spinner", LoadingElementDuration = 1000 }, new { @class = "btn btn-default btn-block" })
+        </div>
+    </div>
+
+
+
     @if (Request.IsAuthenticated)
     {
 

@@ -319,7 +319,7 @@
     <Content Include="Views\Forum\_Reported.cshtml" />
     <Content Include="Views\Moder\ReportedPosts.cshtml" />
     <Content Include="Views\Admin\ManageUsers.cshtml" />
-    <Content Include="Views\Forum\_Post.cshtml" />
+    <Content Include="Views\Forum\_Posts.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

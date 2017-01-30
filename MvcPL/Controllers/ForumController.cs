@@ -134,6 +134,8 @@ namespace MvcPL.Controllers
             forumTopicViewModel.PostInput.TopicId = id;
             forumTopicViewModel.ParentBoards = _topicService.GetTopicParents(id).Select(b => b.ToPlBoard()).Reverse().ToList();
 
+            Session[$"T{id}LastLoad"] = DateTime.Now;
+
             return View(forumTopicViewModel);
         }
 
@@ -198,13 +200,11 @@ namespace MvcPL.Controllers
 
                 if (Request.IsAjaxRequest())
                 {
-                    var post = _postService.GetTopicPosts(topicId).LastOrDefault().ToPlPost();
-                    post.User = _userService.GetUserEntity(post.User.Id).ToPlUser();
-                    return PartialView("_Post", post);
+                    return LoadMorePosts(topicId);
                 }
                 else
                 {
-                    return RedirectToAction("Board", "Topic", new { id = topicId });
+                    return RedirectToAction("Topic", "Forum", new { id = topicId });
                 }
             }
             else
@@ -222,6 +222,22 @@ namespace MvcPL.Controllers
 
                 return View("Topic", forumTopicViewModel);
             }
+        }
+
+        [AllowAnonymous]
+        public ActionResult LoadMorePosts(int id)
+        {
+            DateTime lastLoad = (DateTime)Session[$"T{id}LastLoad"];
+
+            var posts = _postService.GetTopicPosts(id).Where(p => p.CreationDate > lastLoad).Select(p => p.ToPlPost()).ToList();
+            foreach (var post in posts)
+            {
+                post.User = _userService.GetUserEntity(post.User.Id).ToPlUser();
+            }
+
+            Session[$"T{id}LastLoad"] = DateTime.Now;
+
+            return PartialView("_Posts", posts);
         }
 
         [AllowAnonymous]

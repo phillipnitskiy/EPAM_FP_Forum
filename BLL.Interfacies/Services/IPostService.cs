@@ -10,6 +10,7 @@ namespace BLL.Interface.Services
     public interface IPostService
     {
         PostEntity GetPostEntity(int id);
+        IEnumerable<PostEntity> GetTopicPosts(int topicId);
 
         void ReportPost(int id);
         void UnreportPost(int id);

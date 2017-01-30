@@ -32,18 +32,24 @@
         </div>
     </div>
 
-    @foreach (var post in Model.Topic.Posts)
-    {
-        @Html.DisplayFor(m => post)
-    }
+    <div class="row">
+        <div class="col-md-offset-1 col-md-11" id="posts">
 
+            @foreach (var post in Model.Topic.Posts)
+            {
+                @Html.DisplayFor(m => post)
+            }
+
+        </div>
+    </div>
+    
     @if (Request.IsAuthenticated)
     {
 
         <div class="row">
             <div class="col-md-offset-1 col-md-10">
 
-                @Html.EditorFor(m => m.PostInput)
+                @Html.EditorFor(m => m.PostInput, new { UpdateTargetId = "posts" })
 
             </div>
         </div>

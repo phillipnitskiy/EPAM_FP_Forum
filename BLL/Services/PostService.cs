@@ -36,6 +36,13 @@ namespace BLL.Services
             return postRepository.GetById(id)?.ToBLLPost();
         }
 
+        public IEnumerable<PostEntity> GetTopicPosts(int topicId)
+        {
+            return postRepository.GetAll()
+                .Where(p => p.TopicId == topicId)
+                .Select(p => p.ToBLLPost());
+        }
+
 
         public void ReportPost(int id)
         {

@@ -196,12 +196,16 @@ namespace MvcPL.Controllers
 
                 _postService.CreatePost(postEntity);
 
-                if (Url.IsLocalUrl(HttpContext.Request.UrlReferrer.AbsolutePath))
+                if (Request.IsAjaxRequest())
                 {
-                    return Redirect(HttpContext.Request.UrlReferrer.AbsolutePath);
+                    var post = _postService.GetTopicPosts(topicId).LastOrDefault().ToPlPost();
+                    post.User = _userService.GetUserEntity(post.User.Id).ToPlUser();
+                    return PartialView("_Post", post);
                 }
-
-                return RedirectToAction("Board", "Topic", new { id = topicId });
+                else
+                {
+                    return RedirectToAction("Board", "Topic", new { id = topicId });
+                }
             }
             else
             {

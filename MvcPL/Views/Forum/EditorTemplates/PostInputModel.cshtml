@@ -1,6 +1,6 @@
 ﻿@model MvcPL.Models.Input.PostInputModel
 
-@using (Html.BeginForm("AddPost", "Forum", new { topicId = Model.TopicId }, FormMethod.Post, new { @class = "form", role = "form" }))
+@using (Ajax.BeginForm("AddPost", "Forum", new { topicId = Model.TopicId }, new AjaxOptions { UpdateTargetId = ViewBag.UpdateTargetId, InsertionMode = InsertionMode.InsertAfter }, new { @class = "form", role = "form" }))
 {
     @Html.AntiForgeryToken()
 

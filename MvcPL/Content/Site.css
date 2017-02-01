@@ -15,7 +15,14 @@ h6 {
   font-family: FontAwesome, sans-serif;
 }
 
-p, span, label {
+span {
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+p, label {
   font-family: 'Roboto', sans-serif;
   line-height: 22px;
   font-size: 16px;

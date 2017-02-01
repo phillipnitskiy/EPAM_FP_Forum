@@ -4,28 +4,6 @@
     ViewBag.Title = Model.Topic.Subject;
 }
 
-@*@section scripts {
-
-    <script>
-        function loadMorePosts()
-        {
-            $.ajax({
-                url: "/Forum/LoadMorePosts/",
-                cache: false,
-                success: function(html){
-                    $("#posts").append(html);
-                }
-            });
-        }
-
-        $(document).ready(function(){
-            show();
-            setInterval('loadMorePosts()', 10000);
-        });
-    </script>
-    
-}*@
-
 @section Body {
 
 
@@ -55,7 +33,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-offset-1 col-md-11" id="posts">
+        <div class="col-md-12" id="posts">
 
             @foreach (var post in Model.Topic.Posts)
             {

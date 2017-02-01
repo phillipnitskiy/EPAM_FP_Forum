@@ -44,26 +44,34 @@ namespace MvcPL.Controllers
         }
 
         [HttpPost]
-        [MultiButton(MatchFormKey = "postAction", MatchFormValue = "UnreportPost")]
+        [MultiButton(MatchFormKey = "managePostAction", MatchFormValue = "UnreportPost")]
         public ActionResult UnreportPost(int id)
         {
             _postService.UnreportPost(id);
-            return RedirectToAction("ReportedPosts");
+            if (Request.IsAjaxRequest())
+            {
+                return null;
+            }
+            else
+            {
+                return RedirectToAction("ReportedPosts");
+            }
         }
 
         [HttpPost]
-        [MultiButton(MatchFormKey = "postAction", MatchFormValue = "DeletePost")]
+        [MultiButton(MatchFormKey = "managePostAction", MatchFormValue = "DeletePost")]
         public ActionResult DeletePost(int id)
         {
             _postService.DeletePost(id);
-            return RedirectToAction("ReportedPosts");
-        }
+            if (Request.IsAjaxRequest())
+            {
+                return null;
+            }
+            else
+            {
+                return RedirectToAction("ReportedPosts");
+            }
 
-        [HttpPost]
-        [MultiButton(MatchFormKey = "postAction", MatchFormValue = "EditPost")]
-        public ActionResult EditPost(int id)
-        {
-            return View();
         }
 
         #endregion

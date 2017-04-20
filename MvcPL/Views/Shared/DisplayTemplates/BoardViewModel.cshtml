@@ -1,0 +1,90 @@
+﻿@model MvcPL.Models.BoardViewModel
+
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="col-md-1 col-sm-1 col-xs-1"></th>
+                    <th class="col-md-6 col-sm-8 col-xs-11">
+                        <h3 class="board_table_content">@Html.ActionLink(Model.Name, "Board", "Forum", new { id = Model.Id }, null)</h3>
+                    </th>
+                    <th class="col-md-1 text-center hidden-xs hidden-sm">Topics</th>
+                    <th class="col-md-2 text-center hidden-xs hidden-sm">Posts</th>
+                    <th class="col-md-2 col-sm-3 hidden-xs">Last Post</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var subBoard in Model.SubBoards)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <div class="board_table_content">
+                                <i class="fa fa-2x fa-archive text-primary"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <h4 class="board_table_content">
+                                @Html.ActionLink(@subBoard.Name, "Board", "Forum", new { id = subBoard.Id }, null)
+                                <br>
+                                <small>@subBoard.Description</small>
+                            </h4>
+                        </td>
+                        <td class="text-center hidden-xs hidden-sm">
+                            <div class="board_table_content">@subBoard.TopicCount</div>
+                        </td>
+                        <td class="text-center hidden-xs hidden-sm">
+                            <div class="board_table_content">@subBoard.PostCount</div>
+                        </td>
+                        <td class="hidden-xs">
+                            by <a href="#">@subBoard.LastPostUserName</a>
+                            <br>
+                            <small><i class="fa fa-clock-o"></i> @subBoard.LastPostDate.ToShortDateString()</small>
+                        </td>
+                    </tr>
+                }
+                @foreach (var topic in Model.Topics)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <div class="board_table_content">
+                                <i class="fa fa-2x fa-comments-o text-primary"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <h4 class="board_table_content">
+                                @Html.ActionLink(@topic.Subject, "Topic", "Forum", new { id = topic.Id }, null)
+                            </h4>
+                        </td>
+                        <td class="text-center hidden-xs hidden-sm">
+                            <div class="board_table_content"></div>
+                        </td>
+                        <td class="text-center hidden-xs hidden-sm">
+                            <div class="board_table_content">@topic.PostCount</div>
+                        </td>
+                        <td class="hidden-xs">
+                            by <a href="#">@topic.LastPostUserName</a>
+                            <br>
+                            <small><i class="fa fa-clock-o"></i> @topic.LastPostDate.ToShortDateString()</small>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+        @if ((Model.SubBoards == null || Model.SubBoards.Count <= 0) && (Model.Topics == null || Model.Topics.Count <= 0))
+        {
+            <div class="board_empty jumbotron">
+                <h3>Эх-х, совсем пусто...</h3>
+            </div>
+        }
+
+    </div>
+</div>

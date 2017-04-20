@@ -1,0 +1,9 @@
+﻿.content {
+    margin-top: 51px;
+    padding-top: 10px;
+	min-height: calc(100vh - 101px);
+}
+
+.ui-menu {
+    z-index: 1050;
+}

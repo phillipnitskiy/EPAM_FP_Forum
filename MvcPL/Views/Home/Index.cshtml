@@ -1,0 +1,15 @@
+﻿@model MvcPL.Models.View.HomeViewModel
+
+@{
+    ViewBag.Title = "Forum";
+}
+
+@section Body {
+    @foreach (var board in Model.boards)
+    {
+
+        @Html.DisplayFor(m => board)
+
+    }
+
+}
